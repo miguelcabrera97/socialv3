@@ -18,7 +18,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
-
+        <x-header/>
         <div class="bg-gray-100">
             <!-- Page Content -->
             <x-nav/>
