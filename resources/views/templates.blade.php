@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="md:ml-56 lg:ml-56 xl:ml-80 justify-items-center grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-6 m-5">
+    <div class="md:ml-56 lg:ml-56 xl:ml-80 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 p-10 gap-6">
             
         @foreach ($templates as $template)
             {{-- <div class="{{$template->template_name}} transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-150 shadow-xl justify-items-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
