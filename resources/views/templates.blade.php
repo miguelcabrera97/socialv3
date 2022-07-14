@@ -13,7 +13,7 @@
 
             </div> --}}
 
-                <div class="rounded-xl flex flex-col bg-white  w-full divide-y divide-gray-300 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-150 shadow-xl">
+                <!--<div class="rounded-xl flex flex-col bg-white  w-full divide-y divide-gray-300 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-150 shadow-xl">
 
                     <div class=" p-2 ">
                         <h1 class="text-center text-2xl m-1 font-light" >{{$template->template_name}}</h1>
@@ -28,11 +28,25 @@
                     <a target="_blank" class="m-2  items-center py-2 px-2 text-sm text-center text-white bg-purple-700 rounded-lg hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  href="/crear/{{$template->template_id}}">Crear</a>
                     </div>
 
-                </div>
+                </div>-->
+                
+                <div class="caja shadow-xl rounded-3xl max-w-lg max-h-full pt-4 pb-5 px-4">
+                    <div class="w-full h-100">
+                        <img class="" src="{{$template->desktop_thumbnail_url}}" alt="">
+                        
+                    </div>
+                 
+                   
+                     <h2 class="capitalize font-semibold text-lg mt-3 mb-2 text-gray-900 text-center">{{$template->template_name}}</h2>
                     
+                   
+                  
+                </div>
+                 
+                 
                 
 
-             
+                 
         @endforeach
     </div>
 

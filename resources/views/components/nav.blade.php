@@ -1,5 +1,5 @@
 
-    <div class="fixed sm:w-1/4 lg:w-1/5 hidden md:block p-8 border-r border-gray-200">
+    <div class="fixed sm:w-1/4 lg:w-1/5 xl:w-1/6 hidden md:block p-8 border-r h-screen border-gray-200">
         <h6 class="font-bold mb-4">Acciones rapidas</h6>
         <ul>
             <a href="{{route('home')}} ">

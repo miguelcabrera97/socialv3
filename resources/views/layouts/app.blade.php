@@ -16,10 +16,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-gray-100">
         <x-jet-banner />
         <x-header/>
-        <div class="bg-gray-100">
+        <div class="">
             <!-- Page Content -->
             <x-nav/>
             <main>
