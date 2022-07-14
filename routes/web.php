@@ -39,7 +39,7 @@ Route::get('/crearsitio', function(){
     return view('templates',compact('templates'));
 })->name('crearsitio');
 
-Route::get('/crear/{template_id}',function($template_id){
+Route::get('/crear/{template_id}/{correo}',function($template_id, $correo){
 
     $client = new \GuzzleHttp\Client();
 
@@ -59,20 +59,11 @@ Route::get('/crear/{template_id}',function($template_id){
 
     $client2 = new \GuzzleHttp\Client();
 
-    function generateRandomString($length = 10) {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
     $cuenta = generateRandomString();
-   
+      
 
     $response2 = $client2->request('POST', 'https://api.duda.co/api/accounts/create', [
-    'body' => '{"account_type":"CUSTOMER","account_name":"'.$cuenta.'"}',
+    'body' => '{"account_type":"CUSTOMER","account_name":"'.$correo.'"}',
     'headers' => [
         'Accept' => 'application/json',
         'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
@@ -85,7 +76,7 @@ Route::get('/crear/{template_id}',function($template_id){
 
     $client3 = new \GuzzleHttp\Client();
 
-    $response3 = $client3->request('POST', 'https://api.duda.co/api/accounts/'.$cuenta.'/sites/'. $site_name->site_name.'/permissions', [
+    $response3 = $client3->request('POST', 'https://api.duda.co/api/accounts/'.$correo.'/sites/'. $site_name->site_name.'/permissions', [
         'body' => '{"permissions":["EDIT","E_COMMERCE","DEV_MODE","BACKUPS","BLOG","PUSH_NOTIFICATIONS"]}',
         'headers' => [
         'Accept' => 'application/json',
@@ -96,7 +87,7 @@ Route::get('/crear/{template_id}',function($template_id){
 
     $client4 = new \GuzzleHttp\Client();
 
-    $response3 = $client4->request('GET', 'https://api.duda.co/api/accounts/sso/'.$cuenta.'/link?site_name='.$site_name->site_name.'&target=EDITOR', [
+    $response3 = $client4->request('GET', 'https://api.duda.co/api/accounts/sso/'.$correo.'/link?site_name='.$site_name->site_name.'&target=EDITOR', [
         'headers' => [
           'Accept' => 'application/json',
           'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',

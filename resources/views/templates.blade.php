@@ -49,6 +49,7 @@
                  {{-- Card Title--}}
                  <div class="  rounded-t-2xl bg-white h-1/6 w-full text-center  "> 
                      <p class="text-sm capitalize my-3">{{$template->template_name}}</p>
+                     {{ Auth::user()->email }}
                  </div>
                   {{-- End Card Title--}}
                   
@@ -57,7 +58,7 @@
                      <div class="  absolute rounded-b-2xl  backdrop-blur-sm bg-black/50 h-full w-full opacity-0 hover:opacity-100 hover:ease-all hover:duration-300 ">
                          <div class="grid grid-cols-1 gap-1 justify-items-center" style="padding-top: 40%">
                             
-                            <a target="_blank" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  href="crear/{{$template->template_id}}">Empezar a Crear</a>
+                            <a target="_blank" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  href="crear/{{$template->template_id}}/{{ Auth::user()->email }}">Empezar a Crear</a>
                             <a class="w-3/5 m-2  items-center p-3 text-md text-center text-white rounded-lg hover:underline-offset-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hover:underline" target="_blank" href="{{$template->preview_url}}">Vista Previa</a>
                                  
                          
