@@ -59,8 +59,6 @@ Route::get('/crear/{template_id}/{correo}',function($template_id, $correo){
 
     $client2 = new \GuzzleHttp\Client();
 
-    $cuenta = generateRandomString();
-      
 
     $response2 = $client2->request('POST', 'https://api.duda.co/api/accounts/create', [
     'body' => '{"account_type":"CUSTOMER","account_name":"'.$correo.'"}',

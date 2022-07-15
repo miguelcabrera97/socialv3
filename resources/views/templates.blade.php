@@ -43,37 +43,34 @@
                   
                 </div>-->
                 {{-- CARD --}}
-         <div class=" grid grid-cols-1  mt-3 h-4/6 ">
+         <div class=" grid grid-cols-1  mt-3 h-4/6">
             <div class="flex  flex-col"> {{--  Flex --}}
  
                  {{-- Card Title--}}
-                 <div class="  rounded-t-2xl bg-white h-1/6 w-full text-center  "> 
-                     <p class="text-sm capitalize my-3">{{$template->template_name}}</p>
-                     {{ Auth::user()->email }}
-                 </div>
+                 
                   {{-- End Card Title--}}
                   
                  <div class="  h-full w-full relative ">
                      {{-- Botones de Creación y preview --}}
                      <div class="  absolute rounded-b-2xl  backdrop-blur-sm bg-black/50 h-full w-full opacity-0 hover:opacity-100 hover:ease-all hover:duration-300 ">
                          <div class="grid grid-cols-1 gap-1 justify-items-center" style="padding-top: 40%">
-                            
                             <a target="_blank" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  href="crear/{{$template->template_id}}/{{ Auth::user()->email }}">Empezar a Crear</a>
                             <a class="w-3/5 m-2  items-center p-3 text-md text-center text-white rounded-lg hover:underline-offset-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hover:underline" target="_blank" href="{{$template->preview_url}}">Vista Previa</a>
-                                 
-                         
-                           
                          </div>  
                      </div>
                       {{-- END Botones de Creación y preview --}}
                      
                      {{-- background Image Div--}}
-                     <div class="shadow-xl bg-cover bg-center rounded-b-2xl h-full w-full opacity-1 bg-white" >
-                         <img class="rounded-t-3xl rounded-b-3xl" src="{{$template->desktop_thumbnail_url}}" alt="Imagen-Fondo" border="0">
+                     <div class=" bg-cover bg-center  h-full w-full opacity-1 bg-white" >
+                         <img class="rounded-t-3xl " src="{{$template->desktop_thumbnail_url}}" alt="Imagen-Fondo" border="0">
                      </div>
+                     
                      {{-- END background Image Div--}}
  
                  </div>
+                 <div class="rounded-b-2xl bg-white w-full text-center  py-2"> 
+                        <p class="text-sm capitalize">{{$template->template_name}}</p>
+                    </div>
             </div>{{-- End Flex --}}
          </div>
           {{--  END CARD --}}
