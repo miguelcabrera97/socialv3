@@ -1,17 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\DudaController;
 
 
 
@@ -25,21 +15,11 @@ Route::middleware([
     })->name('home');
 });
 
-Route::get('/crearsitio', function(){
-    $client = new \GuzzleHttp\Client();
+Route::get('/crearsitio', [DudaController::class,'show'])->name('crearsitio');
 
-    $response = $client->request('GET', 'https://api.duda.co/api/sites/multiscreen/templates', [
-    'headers' => [
-        'Accept' => 'application/json',
-        'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-    ],
-    ]);
+Route::get('/crears/{template_id}', [DudaController::class,'crear'])->name('crears');
 
-    $templates = json_decode($response->getBody());
-    return view('templates',compact('templates'));
-})->name('crearsitio');
-
-Route::get('/crear/{template_id}/{correo}',function($template_id, $correo){
+Route::get('/crears/{template_id}/{correo}',function($template_id, $correo){
 
     $client = new \GuzzleHttp\Client();
 
