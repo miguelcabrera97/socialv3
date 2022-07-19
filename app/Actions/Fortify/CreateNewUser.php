@@ -26,6 +26,22 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+        
+        $client = new \GuzzleHttp\Client();
+
+        $nombre = $input['name'];
+        $target = " ";
+        $nombre_separado = explode($target, $nombre);
+    
+
+        $response = $client->request('POST', 'https://api.duda.co/api/accounts/create', [
+        'body' => '{"account_type":"CUSTOMER","account_name":"'.$input['email'].'","first_name":"'.$nombre_separado[0].'" ,"last_name":"'.$nombre_separado[1].'"}',
+        'headers' => [
+            'Accept' => 'application/json',
+            'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+            'Content-Type' => 'application/json',
+        ],
+        ]);
 
         return User::create([
             'name' => $input['name'],

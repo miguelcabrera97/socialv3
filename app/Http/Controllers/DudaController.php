@@ -37,18 +37,5 @@ class DudaController extends Controller{
         
     }
     
-    public function cuenta($correo){
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'https://api.duda.co/api/accounts/create', [
-        'body' => '{"account_type":"CUSTOMER","account_name":"'.$correo.'"}',
-        'headers' => [
-            'Accept' => 'application/json',
-            'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-            'Content-Type' => 'application/json',
-        ],
-        ]);
-
-        echo $response->getBody();
-    }
 }
 

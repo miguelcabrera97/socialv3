@@ -17,45 +17,42 @@ Route::middleware([
 
 Route::get('/crearsitio', [DudaController::class,'show'])->name('crearsitio');
 
-Route::get('/crears/{template_id}', [DudaController::class,'crear'])->name('crears');
+// Route::get('/crears/{template_id}', [DudaController::class,'crear'])->name('crears');
+
 
 Route::get('/crears/{template_id}/{correo}',function($template_id, $correo){
 
     $client = new \GuzzleHttp\Client();
+    
+    // $response = $client->request('POST', 'https://api.duda.co/api/sites/multiscreen/create', [
+    //     'body' => '{"template_id":'.$template_id.',"lang":"es"} ',
+    //     'headers' => [
+    //     'Accept' => 'application/json',
+    //     'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+    //     'Content-Type' => 'application/json',
+    // ],
+    // ]);
 
     $response = $client->request('POST', 'https://api.duda.co/api/sites/multiscreen/create', [
-        'body' => '{"template_id":'.$template_id.',"lang":"es"} ',
+        'body' => '{"default_domain_prefix":"pruebassss2","template_id":"'.$template_id.'"}',
         'headers' => [
-        'Accept' => 'application/json',
-        'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-        'Content-Type' => 'application/json',
-    ],
-    ]);
+          'Accept' => 'application/json',
+          'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+          'Content-Type' => 'application/json',
+        ],
+      ]);
+      
+
 
     $site_name = json_decode($response->getBody()->getContents());
 
     //header("Location: ".$site_url);
     //die();
 
-    $client2 = new \GuzzleHttp\Client();
-
-
-    $response2 = $client2->request('POST', 'https://api.duda.co/api/accounts/create', [
-    'body' => '{"account_type":"CUSTOMER","account_name":"'.$correo.'"}',
-    'headers' => [
-        'Accept' => 'application/json',
-        'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-        'Content-Type' => 'application/json',
-    ],
-    ]);
-
-    echo $response2->getBody();
-
-
     $client3 = new \GuzzleHttp\Client();
 
     $response3 = $client3->request('POST', 'https://api.duda.co/api/accounts/'.$correo.'/sites/'. $site_name->site_name.'/permissions', [
-        'body' => '{"permissions":["EDIT","E_COMMERCE","DEV_MODE","BACKUPS","BLOG","PUSH_NOTIFICATIONS"]}',
+        'body' => '{"permissions":["EDIT","E_COMMERCE","DEV_MODE","BACKUPS","BLOG","PUSH_NOTIFICATIONS","PUBLISH","REPUBLISH"]}',
         'headers' => [
         'Accept' => 'application/json',
         'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
