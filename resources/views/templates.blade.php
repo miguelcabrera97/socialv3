@@ -22,7 +22,7 @@
                            {{-- <input type="submit" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value="Empezar a crear" onclick="CrearSitio('{{$cont+1}}')" >  --}}
                            
                            <div class="flex items-center justify-center h-full">
-                            <button class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="toggleModal({{$template->template_id}})">Show Modal</button>
+                            <button class="py-2 px-4 bg-fuchsia-500 text-white rounded hover:bg-fuchsia-700" onclick="toggleModal({{$template->template_id}})">Empezar a Crear</button>
                           </div>
                            
                            {{-- <a target="_blank" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  href="crears/{{$template->template_id}}/{{Auth::user()->email}}">Empezar a Crear</a>  --}}
@@ -79,17 +79,23 @@
           <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <label> Nombre del sitio</label>
-              <form action="#" method="POST">
-                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" id="nombresite" />
-                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3 hidden" id="templateid"/>
-                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3 hidden"  id="emailuser" value="{{Auth::user()->email}}" /> 
-                 
-                 <input type="submit" id="CrearSitio" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value="Crear mi Sitio" > 
+              <form action="{{route('crear')}}" method="POST">
+                @csrf
+                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="nombre" id="nombresite" />
+                @error('nombre')
+                  <br>
+                  <small>{{$message}}</small>
+                  <br>
+                @enderror
+                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="template_id" id="templateid"/>
+                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="user" id="emailuser" value="{{Auth::user()->email}}" /> 
+                 <button type="button" class="m-2 items-center p-3 text-md text-center font-bold bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancelar</button>
+                 <input type="submit" id="CrearSitio" class="m-2  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value="Crear mi Sitio" >
               </form>
             </div>
             <div class="bg-gray-200 px-4 py-3 text-right">
-              <button type="button" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancel</button>
-              <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2"><i class="fas fa-plus"></i> Create</button>
+              
+              
             </div>
           </div>
         </div>
