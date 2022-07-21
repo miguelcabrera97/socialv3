@@ -36,3 +36,8 @@ Route::get('/sitios/{user}', function($user){
         return view('sitios', compact('sitios'));
 });
 
+Route::get('/editar/{cuenta}/{id}',[SitiosController::class, 'editar']);
+
+Route::post('/resetear',[SitiosController::class,'reset'])->name('resetear');
+
+Route::get('/delete/{site}',[SitiosController::class,'delete']);
