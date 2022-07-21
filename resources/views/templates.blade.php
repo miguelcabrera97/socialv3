@@ -87,8 +87,8 @@
                   <small>{{$message}}</small>
                   <br>
                 @enderror
-                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="template_id" id="templateid"/>
-                 <input type="text" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="user" id="emailuser" value="{{Auth::user()->email}}" /> 
+                 <input type="hidden" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="template_id" id="templateid"/>
+                 <input type="hidden" class="w-full bg-gray-100 p-2 mt-2 mb-3" name="user" id="emailuser" value="{{Auth::user()->email}}" /> 
                  <button type="button" class="m-2 items-center p-3 text-md text-center font-bold bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancelar</button>
                  <input type="submit" id="CrearSitio" class="m-2  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value="Crear mi Sitio" >
               </form>
